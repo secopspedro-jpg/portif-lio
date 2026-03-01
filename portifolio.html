@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Segurança da Informação</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --dark-bg: #0a0e1a;
+            --card-bg: #151f2e;
+            --text-light: #e9ecef;
+            --golpe-color: #c52828;
+            --sistema-color: #28a745;
+            --osint-color: #ffc107;
+            --lei-color: #6f42c1;
+            --ferramenta-bg: #1e293b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2639 100%);
+            color: white;
+            padding: 120px 0;
+            margin-top: 56px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+        
+        /* Efeito de digitação */
+        .typed-text {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            min-height: 3.5rem;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 5px;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Imagem lateral */
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(13, 110, 253, 0.1)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600"><rect width="800" height="600" fill="%230d6efd" opacity="0.1"/><circle cx="600" cy="200" r="80" fill="%230d6efd" opacity="0.2"/><circle cx="500" cy="400" r="120" fill="%230d6efd" opacity="0.15"/><circle cx="700" cy="450" r="60" fill="%230d6efd" opacity="0.25"/><text x="450" y="300" font-family="Arial" font-size="48" fill="white" opacity="0.3">SecInfo</text><path d="M300 200 L500 200 L550 300 L500 400 L300 400 L250 300 Z" fill="%230d6efd" opacity="0.2"/><path d="M350 250 L450 250 L475 300 L450 350 L350 350 L325 300 Z" fill="white" opacity="0.15"/></svg>');
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        /* Ícone de shield animado */
+        .floating-shield {
+            position: absolute;
+            right: 15%;
+            top: 30%;
+            font-size: 8rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin: 2rem 0 1.5rem;
+            color: var(--dark-bg);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        
+        .card-custom {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13,110,253,0.15);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge-custom {
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .ferramenta-card {
+            background: var(--ferramenta-bg);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .ferramenta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .ferramenta-titulo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+        
+        .ferramenta-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .comando-box {
+            background: #000;
+            color: #00ff00;
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+        
+        .crime-box {
+            background: #2d2d2d;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .lei-box {
+            background: #f0e6ff;
+            border-left: 4px solid var(--lei-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .etica-box {
+            background: var(--dark-bg);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .alert-card {
+            border-left: 4px solid var(--primary-color);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 60px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: var(--dark-bg);
+            color: white;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .counter-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            margin: 3rem 0;
+        }
+        
+        .tool-category {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .typed-text {
+                font-size: 1.25rem;
+            }
+            
+            .hero-image {
+                width: 100%;
+                opacity: 0.3;
+            }
+            
+            .floating-shield {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-shield-halved me-2"></i>SecInfo Portfolio
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ferramentas">Ferramentas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#crimes">Crimes Cibernéticos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#leis">Leis e Ética</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#osint">OSINT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#golpes">Golpes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#protecao">Proteção</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <!-- Imagem lateral -->
+    <div class="hero-image"></div>
+    
+    <!-- Ícone flutuante -->
+    <div class="floating-shield">
+        <i class="fas fa-shield-halved"></i>
+    </div>
+    
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="hero-title">Segurança da Informação</h1>
+                
+                <!-- Efeito de digitação -->
+                <div class="typed-text">
+                    <span id="typed"></span><span class="cursor">|</span>
+                </div>
+                
+                <p class="hero-subtitle">Especialista em conscientização, testes de invasão éticos e prevenção contra crimes cibernéticos. Conheça as ferramentas, técnicas e aspectos legais da segurança digital.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#ferramentas" class="btn btn-primary btn-lg">
+                        <i class="fas fa-tools me-2"></i>Ver Ferramentas
+                    </a>
+                    <a href="#leis" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-gavel me-2"></i>Leis e Ética
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 stat-item mb-4 mb-md-0">
+                <div class="stat-number counter-value" data-target="98">0</div>
+                <div class="stat-label">Ataques envolvem Engenharia Social</div>
+            </div>
+            <div class="col-md-4 stat-item mb-4 mb-md-0">
+                <div class="stat-number counter-value" data-target="3.4">0</div>
+                <div class="stat-label">Milhões de tentativas/dia no Brasil</div>
+            </div>
+            <div class="col-md-4 stat-item">
+                <div class="stat-number counter-value" data-target="85">0</div>
+                <div class="stat-label">% das empresas já sofreram ataques</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO DE FERRAMENTAS COMPLETA -->
+<section id="ferramentas" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Ferramentas de Segurança</h2>
+        <p class="lead mb-4">Ferramentas profissionais usadas em testes de invasão éticos e análise de segurança.</p>
+
+        <!-- Reconhecimento (Recon) -->
+        <h3 class="tool-category"><i class="fas fa-search me-2"></i>Reconhecimento (Recon)</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-network-wired fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Nmap</h4>
+                    <p class="ferramenta-desc">Scanner de rede para descoberta de hosts, portas e serviços.</p>
+                    <div class="comando-box">nmap -sV -p- 192.168.1.1</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-globe fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Amass</h4>
+                    <p class="ferramenta-desc">Enumeração de subdomínios e mapeamento de superfície de ataque.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-envelope fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">theHarvester</h4>
+                    <p class="ferramenta-desc">Coleta e-mails, subdomínios e IPs de fontes públicas.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-sitemap fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Recon-ng</h4>
+                    <p class="ferramenta-desc">Framework completo para OSINT e reconhecimento.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-project-diagram fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Maltego</h4>
+                    <p class="ferramenta-desc">Análise gráfica de conexões entre dados e entidades.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teste de Aplicações Web -->
+        <h3 class="tool-category"><i class="fas fa-globe me-2"></i>Teste de Aplicações Web</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-bug fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Burp Suite</h4>
+                    <p class="ferramenta-desc">Proxy para interceptação e teste de aplicações web.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-shield-alt fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">OWASP ZAP</h4>
+                    <p class="ferramenta-desc">Scanner de vulnerabilidades para aplicações web.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-search fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Nikto</h4>
+                    <p class="ferramenta-desc">Scanner de vulnerabilidades para servidores web.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-folder-open fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Gobuster</h4>
+                    <p class="ferramenta-desc">Força bruta em diretórios e arquivos.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-database fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">SQLmap</h4>
+                    <p class="ferramenta-desc">Automatização de detecção de SQL Injection.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exploração -->
+        <h3 class="tool-category"><i class="fas fa-skull me-2"></i>Exploração</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-biohazard fa-2x text-danger"></i>
+                    <h4 class="ferramenta-titulo">Metasploit</h4>
+                    <p class="ferramenta-desc">Framework para desenvolvimento e execução de exploits.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-search fa-2x text-danger"></i>
+                    <h4 class="ferramenta-titulo">Searchsploit</h4>
+                    <p class="ferramenta-desc">Pesquisa de exploits públicos.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-bolt fa-2x text-danger"></i>
+                    <h4 class="ferramenta-titulo">BeEF</h4>
+                    <p class="ferramenta-desc">Framework de exploração de navegadores.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Senhas & Hashes -->
+        <h3 class="tool-category"><i class="fas fa-key me-2"></i>Senhas & Hashes</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-bolt fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Hydra</h4>
+                    <p class="ferramenta-desc">Ataque de força bruta em serviços.</p>
+                    <div class="comando-box">hydra -l admin -P wordlist.txt ssh://192.168.1.1</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-calculator fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">John the Ripper</h4>
+                    <p class="ferramenta-desc">Quebra de senhas e hashes.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-microchip fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">Hashcat</h4>
+                    <p class="ferramenta-desc">Quebra de hashes com GPU.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-pencil-alt fa-2x text-warning"></i>
+                    <h4 class="ferramenta-titulo">CeWL</h4>
+                    <p class="ferramenta-desc">Gera wordlists personalizadas de sites.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wireless -->
+        <h3 class="tool-category"><i class="fas fa-wifi me-2"></i>Wireless</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-wifi fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Aircrack-ng</h4>
+                    <p class="ferramenta-desc">Suite para testes de segurança em redes Wi-Fi.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-signal fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Kismet</h4>
+                    <p class="ferramenta-desc">Detector e sniffer de redes wireless.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-bolt fa-2x text-info"></i>
+                    <h4 class="ferramenta-titulo">Wifite</h4>
+                    <p class="ferramenta-desc">Automatização de ataques a redes Wi-Fi.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Análise de Rede -->
+        <h3 class="tool-category"><i class="fas fa-chart-line me-2"></i>Análise de Rede</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-chart-pie fa-2x text-secondary"></i>
+                    <h4 class="ferramenta-titulo">Wireshark</h4>
+                    <p class="ferramenta-desc">Analisador de pacotes para capturar tráfego.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-terminal fa-2x text-secondary"></i>
+                    <h4 class="ferramenta-titulo">Tcpdump</h4>
+                    <p class="ferramenta-desc">Captura de pacotes via linha de comando.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="ferramenta-card">
+                    <i class="fas fa-plug fa-2x text-secondary"></i>
+                    <h4 class="ferramenta-titulo">Netcat</h4>
+                    <p class="ferramenta-desc">Ferramenta de rede para leitura/escrita em conexões.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO OSINT -->
+<section id="osint" class="py-5">
+    <div class="container">
+        <h2 class="section-title">OSINT - Inteligência de Fontes Abertas</h2>
+        <p class="lead mb-4">Coleta e análise de informações públicas para investigação e segurança.</p>
+
+        <!-- Automação OSINT -->
+        <h3 class="tool-category"><i class="fas fa-robot me-2"></i>OSINT (Automação)</h3>
+        <div class="row mb-5">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card-custom card-recon p-4">
+                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Maltego</h4>
+                    <p>Análise gráfica de conexões entre pessoas, empresas e domínios.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card-custom card-recon p-4">
+                    <div class="card-icon"><i class="fas fa-spider"></i></div>
+                    <h4>SpiderFoot</h4>
+                    <p>Coleta automática de dados de mais de 100 fontes públicas.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card-custom card-recon p-4">
+                    <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+                    <h4>Recon-ng</h4>
+                    <p>Framework estilo Metasploit para OSINT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Domínios e Infraestrutura -->
+        <h3 class="tool-category"><i class="fas fa-globe me-2"></i>OSINT para Domínios e Infraestrutura</h3>
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Shodan</h4>
+                    <p class="ferramenta-desc">Busca por dispositivos conectados à internet.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Censys</h4>
+                    <p class="ferramenta-desc">Análise de infraestrutura e certificados.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Sublist3r</h4>
+                    <p class="ferramenta-desc">Enumeração de subdomínios.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">DNSDumpster</h4>
+                    <p class="ferramenta-desc">Mapeamento de DNS e subdomínios.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Netcraft</h4>
+                    <p class="ferramenta-desc">Análise de sites e servidores.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usuários e Redes Sociais -->
+        <h3 class="tool-category"><i class="fas fa-users me-2"></i>OSINT para Usuários e Redes Sociais</h3>
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Sherlock</h4>
+                    <p class="ferramenta-desc">Encontra username em redes sociais.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Maigret</h4>
+                    <p class="ferramenta-desc">Busca por username em 2000+ sites.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Social-Analyzer</h4>
+                    <p class="ferramenta-desc">Análise de perfis em redes sociais.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email e Vazamentos -->
+        <h3 class="tool-category"><i class="fas fa-envelope me-2"></i>OSINT para Email e Vazamentos</h3>
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Hunter.io</h4>
+                    <p class="ferramenta-desc">Encontra e-mails de domínios.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Have I Been Pwned</h4>
+                    <p class="ferramenta-desc">Verifica se e-mail foi vazado.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="ferramenta-card">
+                    <h4 class="ferramenta-titulo">Intelligence X</h4>
+                    <p class="ferramenta-desc">Busca em bases de dados vazadas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO CRIMES CIBERNÉTICOS -->
+<section id="crimes" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Crimes Cibernéticos</h2>
+        <p class="lead mb-4">Principais crimes praticados na internet e suas consequências legais.</p>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h3 class="h4 mb-3"><i class="fas fa-laptop-code text-danger me-2"></i>Invasão e Ataque a Sistemas</h3>
+                <div class="crime-box">
+                    <strong>Invasão de dispositivo informático</strong>
+                    <p class="mb-0 small">Acessar computador, servidor ou celular sem autorização.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Quebra de senha</strong>
+                    <p class="mb-0 small">Utilização de técnicas para descobrir senhas.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Instalação de malware</strong>
+                    <p class="mb-0 small">Infectar dispositivos com vírus, trojans, etc.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Ataque DDoS</strong>
+                    <p class="mb-0 small">Negação de serviço para derrubar sites/serviços.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Defacement</strong>
+                    <p class="mb-0 small">Alterar site sem autorização (pichação virtual).</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h3 class="h4 mb-3"><i class="fas fa-virus text-danger me-2"></i>Malware e Ataques Técnicos</h3>
+                <div class="crime-box">
+                    <strong>Criação de vírus</strong>
+                    <p class="mb-0 small">Desenvolvimento de softwares maliciosos.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Ransomware</strong>
+                    <p class="mb-0 small">Sequestro de dados com pedido de resgate.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Spyware</strong>
+                    <p class="mb-0 small">Monitoramento e coleta de dados da vítima.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Keylogger</strong>
+                    <p class="mb-0 small">Captura de teclas digitadas.</p>
+                </div>
+                <div class="crime-box">
+                    <strong>Botnet</strong>
+                    <p class="mb-0 small">Rede de computadores infectados controlados remotamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fraudes e Golpes -->
+        <h3 class="tool-category mt-4"><i class="fas fa-money-bill-wave text-danger me-2"></i>Fraudes e Golpes</h3>
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Golpe do falso boleto</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Golpe do PIX</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Clonagem de cartão</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Fraude bancária online</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Engenharia social</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="crime-box">
+                    <strong>Estelionato eletrônico</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vazamento de Dados -->
+        <h3 class="tool-category mt-4"><i class="fas fa-database text-danger me-2"></i>Vazamento de Dados</h3>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="crime-box">
+                    <strong>Venda de dados pessoais</strong>
+                    <p class="mb-0 small">Comercialização de informações roubadas.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="crime-box">
+                    <strong>Vazamento de base de dados</strong>
+                    <p class="mb-0 small">Exposição não autorizada de informações.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="crime-box">
+                    <strong>Uso indevido de dados</strong>
+                    <p class="mb-0 small">Violação da LGPD no Brasil.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO LEIS E ÉTICA -->
+<section id="leis" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Leis e Ética Hacker</h2>
+
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="lei-box">
+                    <h3 class="h4 mb-3"><i class="fas fa-gavel text-primary me-2"></i>Leis Brasileiras</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <strong>Lei Carolina Dieckmann (12.737/2012)</strong>
+                            <p class="mb-0 small">Tipifica crimes de invasão de dispositivos informáticos. Pena: 3 meses a 2 anos de prisão.</p>
+                        </li>
+                        <li class="mb-3">
+                            <strong>Marco Civil da Internet (12.965/2014)</strong>
+                            <p class="mb-0 small">Estabelece princípios, garantias e deveres para uso da internet no Brasil.</p>
+                        </li>
+                        <li class="mb-3">
+                            <strong>LGPD (13.709/2018)</strong>
+                            <p class="mb-0 small">Lei Geral de Proteção de Dados - regula tratamento de dados pessoais. Multas de até R$ 50 milhões.</p>
+                        </li>
+                        <li class="mb-3">
+                            <strong>Código Penal - Art. 154-A</strong>
+                            <p class="mb-0 small">Invasão de dispositivo informático alheio. Pena: reclusão de 1 a 4 anos e multa.</p>
+                        </li>
+                        <li class="mb-3">
+                            <strong>Art. 266</strong>
+                            <p class="mb-0 small">Interrupção ou perturbação de serviço telegráfico, telefônico ou informático.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="etica-box">
+                    <h3 class="h4 mb-3"><i class="fas fa-balance-scale text-warning me-2"></i>Ética Hacker</h3>
+                    
+                    <h5 class="mt-4 mb-2">Hacker Ético (White Hat)</h5>
+                    <p>Profissional que utiliza conhecimento para proteger sistemas, com autorização e dentro da lei.</p>
+                    
+                    <h5 class="mt-4 mb-2">Hacker do Bem (Gray Hat)</h5>
+                    <p>Pode invadir sem autorização mas sem más intenções, geralmente reportando falhas.</p>
+                    
+                    <h5 class="mt-4 mb-2">Cracker (Black Hat)</h5>
+                    <p>Utiliza conhecimento para fins criminosos, roubo de dados e prejuízo.</p>
+                    
+                    <h5 class="mt-4 mb-2">Princípios Éticos</h5>
+                    <ul>
+                        <li>Obter autorização antes de testar sistemas</li>
+                        <li>Não causar danos ou prejuízos</li>
+                        <li>Reportar vulnerabilidades encontradas</li>
+                        <li>Respeitar privacidade e dados</li>
+                        <li>Usar conhecimento para proteção</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificações -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert-card">
+                    <h4 class="mb-3"><i class="fas fa-certificate text-primary me-2"></i>Certificações Profissionais</h4>
+                    <div class="row">
+                        <div class="col-md-3 col-6 mb-2">CEH (Certified Ethical Hacker)</div>
+                        <div class="col-md-3 col-6 mb-2">OSCP (Offensive Security)</div>
+                        <div class="col-md-3 col-6 mb-2">CISSP</div>
+                        <div class="col-md-3 col-6 mb-2">CompTIA Security+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO GOLPES -->
+<section id="golpes" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Golpes Comuns</h2>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-file-invoice"></i></div>
+                    <h4>Falso Boleto</h4>
+                    <p>Boleto falso enviado por e-mail ou SMS com dados alterados.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-pix"></i></div>
+                    <h4>Golpe do PIX</h4>
+                    <p>Pedido de dinheiro falso, devolução de PIX errado, etc.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-credit-card"></i></div>
+                    <h4>Clonagem de Cartão</h4>
+                    <p>Cópia de dados do cartão para compras fraudulentas.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-university"></i></div>
+                    <h4>Fraude Bancária</h4>
+                    <p>Phishing, links falsos, captura de credenciais.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-users"></i></div>
+                    <h4>Engenharia Social</h4>
+                    <p>Manipulação psicológica para obter informações.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-custom p-4">
+                    <div class="card-icon text-danger"><i class="fas fa-gavel"></i></div>
+                    <h4>Estelionato Eletrônico</h4>
+                    <p>Golpes online em geral, falsas vendas, perfis falsos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Proteção Section -->
+<section id="protecao" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Como se Proteger</h2>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card-custom p-4 h-100">
+                    <h4><i class="fas fa-shield-alt text-primary me-2"></i>Dicas Básicas</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Use autenticação em dois fatores</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Senhas fortes e diferentes</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Desconfie de links e anexos</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Mantenha sistemas atualizados</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Faça backups regulares</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card-custom p-4 h-100">
+                    <h4><i class="fas fa-gavel text-primary me-2"></i>O que fazer se for vítima</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fas fa-phone text-danger me-2"></i> Contate o banco imediatamente</li>
+                        <li class="mb-2"><i class="fas fa-file text-danger me-2"></i> Registre boletim de ocorrência</li>
+                        <li class="mb-2"><i class="fas fa-lock text-danger me-2"></i> Troque todas as senhas</li>
+                        <li class="mb-2"><i class="fas fa-database text-danger me-2"></i> Monitore seu CPF</li>
+                        <li class="mb-2"><i class="fas fa-gavel text-danger me-2"></i> Reúna provas (prints, e-mails)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Checklist Final -->
+        <div class="bg-primary text-white p-4 rounded-3 mt-4">
+            <h4 class="mb-3"><i class="fas fa-clipboard-check me-2"></i>Checklist de Segurança Digital</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><i class="fas fa-check me-2"></i> Autenticação 2FA ativada</p>
+                    <p><i class="fas fa-check me-2"></i> Senhas armazenadas em gerenciador</p>
+                    <p><i class="fas fa-check me-2"></i> Backup automático configurado</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-check me-2"></i> Antivírus atualizado</p>
+                    <p><i class="fas fa-check me-2"></i> Sistema operacional atualizado</p>
+                    <p><i class="fas fa-check me-2"></i> Verificação de vazamentos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container">
+        <p class="mb-0">&copy; 2024 Segurança da Informação. Todos os direitos reservados.</p>
+        <p class="mb-0 mt-2">
+            <i class="fas fa-shield-alt me-1"></i>
+            Conhecimento e ética - a base da segurança digital
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Counter animation for stats
+    const counters = document.querySelectorAll('.counter-value');
+    let counterStarted = false;
+
+    function startCounters() {
+        counters.forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 50;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.innerText = target % 1 === 0 ? 
+                        Math.ceil(current) : 
+                        current.toFixed(1);
+                    setTimeout(updateCounter, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+
+    // Trigger counters when stats section is visible
+    window.addEventListener('scroll', () => {
+        const statsSection = document.querySelector('.stats-section');
+        if (!counterStarted && statsSection && window.scrollY + window.innerHeight > statsSection.offsetTop) {
+            startCounters();
+            counterStarted = true;
+        }
+    });
+
+    // Add animation on scroll for cards
+    const cards = document.querySelectorAll('.card-custom, .ferramenta-card, .crime-box, .lei-box, .etica-box');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+    });
+
+    // Highlight navbar items on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Efeito de digitação
+    const typedElement = document.getElementById('typed');
+    const phrases = [
+        'Hacker Ético',
+        'Pentester Profissional',
+        'Especialista em OSINT',
+        'Consultor de Segurança',
+        'Analista de Redes'
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 1000; // Pausa antes de apagar
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500; // Pausa antes de digitar próxima
+        }
+
+        setTimeout(typeEffect, typingSpeed);
+    }
+
+    // Iniciar efeito de digitação
+    setTimeout(typeEffect, 1000);
+</script>
+
+</body>
+</html>
